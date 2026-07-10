@@ -1,0 +1,49 @@
+# Core ML/RL Libraries
+torch>=2.0.0
+numpy>=1.24.0
+gymnasium>=0.29.0
+stable-baselines3>=2.1.0
+
+# Differential Privacy
+opacus>=1.4.0
+# privacy-analysis removed – not on PyPI
+
+# Data Processing
+pandas>=2.0.0
+scikit-learn>=1.3.0
+scipy>=1.11.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.17.0
+tensorboard>=2.14.0
+
+# Configuration & Utilities
+pyyaml>=6.0
+hydra-core>=1.3.0
+tqdm>=4.66.0
+click>=8.1.0
+
+# Networking Simulation
+networkx>=3.1
+simpy>=4.0.0
+
+# Metrics & Evaluation
+scikit-metrics>=0.1.0
+wandb>=0.15.0  # Optional: for experiment tracking
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.11.0
+
+# Development
+black>=23.7.0
+flake8>=6.1.0
+mypy>=1.5.0
+jupyterlab>=4.0.0
+
+# Documentation
+sphinx>=7.1.0
+sphinx-rtd-theme>=1.3.0
