@@ -1,0 +1,56 @@
+# Federated PPO with Differential Privacy
+
+experiment:
+  name: "fed_ppo_dp_epsilon10"
+  seed: 42
+  log_dir: "logs"
+  checkpoint_dir: "checkpoints"
+  save_frequency: 10
+
+federated:
+  num_sites: 5
+  communication_rounds: 30
+  local_epochs: 5
+  aggregation_method: "fedavg"
+  site_sampling_rate: 1.0
+  min_clients: 1
+
+environment:
+  episode_length: 1000
+  traffic_patterns:
+    - site_0: "mixed_light_attack"
+    - site_1: "mixed_heavy_attack"
+    - site_2: "mixed_light_attack"
+    - site_3: "mixed_heavy_attack"
+    - site_4: "mixed_light_attack"
+
+agent:
+  algorithm: "ppo"
+  network:
+    hidden_layers: [256, 128, 64]
+    activation: "relu"
+  ppo:
+    learning_rate: 3.0e-4
+    batch_size: 128
+
+privacy:
+  enabled: true
+  mechanism: "dp_sgd"
+  dp_sgd:
+    noise_multiplier: 1.1
+    max_grad_norm: 1.0
+    target_epsilon: 10.0
+    target_delta: 1e-5
+    secure_rng: true
+  accounting:
+    method: "rdp"
+    track_per_site: true
+
+compute:
+  device: "auto"
+  num_workers: 4
+  deterministic: true
+
+evaluation:
+  frequency: 10
+  num_episodes: 50
