@@ -1,0 +1,42 @@
+# Baseline: Centralized RL (No Federation, No DP)
+
+experiment:
+  name: "centralized_ppo_baseline"
+  seed: 42
+  log_dir: "logs"
+  checkpoint_dir: "checkpoints"
+  save_frequency: 10
+
+federated:
+  num_sites: 5
+  communication_rounds: 300
+  local_epochs: 1
+  aggregation_method: "fedavg"
+  site_sampling_rate: 1.0
+  min_clients: 1
+
+environment:
+  episode_length: 1000
+
+agent:
+  algorithm: "ppo"
+  network:
+    hidden_layers: [256, 128, 64]
+    activation: "relu"
+  ppo:
+    learning_rate: 3.0e-4
+    batch_size: 256
+
+privacy:
+  enabled: false
+  accounting:
+    method: "rdp"
+
+compute:
+  device: "auto"
+  num_workers: 4
+  deterministic: true
+
+evaluation:
+  frequency: 5
+  num_episodes: 50
