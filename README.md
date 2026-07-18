@@ -186,7 +186,7 @@ Edit `config/default_config.yaml` to customize:
 ```bibtex
 @misc{federated_rl_anomaly_2025,
   title={Privacy-Preserving Federated Reinforcement Learning for Network Anomaly Response},
-  author={Your Name},
+  author={SAHIL YADAV},
   year={2025}
 }
 ```
